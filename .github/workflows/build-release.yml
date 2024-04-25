@@ -1,4 +1,4 @@
-name: Build Project
+name: Build ProtocolLib
 
 # On each push to the paths
 on:
@@ -60,7 +60,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Project-${{ steps.vars.outputs.sha_short }}
+          name: ProtocolLib-${{ steps.vars.outputs.sha_short }}
           path: build/libs
         continue-on-error: true
       
@@ -80,13 +80,13 @@ jobs:
             build/libs/*.jar
             dev_env.zip
           tag_name: commit-${{ steps.vars.outputs.sha_short }}
-          name: Project ${{ steps.vars.outputs.sha_short }}
+          name: ProtocolLib ${{ steps.vars.outputs.sha_short }}
           body: |
             Commit ${{ steps.vars.outputs.sha_short }}
-            Project
+            ProtocolLib
           generate_release_notes: true # Adds the link to view diff
         env:
-          GITHUB_REPOSITORY: MediumCraft/Project # Change MediumCraft to the repository owner! For example: LeeHansHinLun/Project = GITHUB_REPOSITORY: LeeHansHinLun/Project
+          GITHUB_REPOSITORY: MediumCraft/ProtocolLib # Change MediumCraft to the repository owner! For example: LeeHansHinLun/ProtocolLib = GITHUB_REPOSITORY: LeeHansHinLun/ProtocolLib
           # But it is too simple so I hope no one forgets!
           # PS: Don't upload to my repositories
         continue-on-error: true # Added so it doesn't fail when dev_env.zip is too large.
